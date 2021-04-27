@@ -4,6 +4,8 @@ import com.example.candyorderservice.service.CandyOrderService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.jms.JMSException;
+
 
 @Component
 public class PlaceOrderSimulator {
@@ -15,7 +17,8 @@ public class PlaceOrderSimulator {
     }
 
     @Scheduled(fixedRate = 5000)
-    public void placeOrder(){
-        candyOrderService.placeOrder();
+    public void placeOrder() throws JMSException {
+//        candyOrderService.placeOrder();
+        candyOrderService.placeOrderWithJms();
     }
 }
